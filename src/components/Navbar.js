@@ -53,7 +53,6 @@ const Navabar = () => {
                                         inputProps={{ 'aria-label': 'secondary checkbox' }}
                                     />}
                                 label='Dark mode'
-                                labelPlacement='top'
                             />
                         </FormGroup>
                         <FormGroup className={classes.switch} aria-label='position' row>
@@ -66,17 +65,12 @@ const Navabar = () => {
                                         color='secondary'
                                         inputProps={{ 'aria-label': 'secondary checkbox' }}
                                     />}
-                                label='degrees'
-                                labelPlacement='top'
+                                label='Degrees'
                             />
                         </FormGroup>
                     </Typography>
                 </AppBar>
             </nav>
-            darkmode: {darkmode ? 'yes' : 'no'}
-            <button onClick={() => dispatch({ type: TOGGLE_DARKMODE })}>
-                TOGGLE DARKMODE
-            </button>
         </div>
     )
 }

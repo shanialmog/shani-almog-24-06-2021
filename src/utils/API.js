@@ -1,16 +1,16 @@
-const currentWeather = require('./mocks/mockDataCurrent.json')
-const weatherForecast = require('./mocks/mockDataForecast.json')
-const searchLocation = require('./mocks/mockDataSearch.json')
+const cityWeather = require('./mocks/mockDataCityWeather.json')
+const cityWeatherForecast = require('./mocks/mockDataForecast.json')
+const searchCity = require('./mocks/mockDataSearch.json')
 const geolocationWeather = require('./mocks/mockDataGeolocation.json')
 
 export const getData = async (path, params) => {
-    const data = {}
-    if (path === 'current') {
-        data = currentWeather
-    } else if (path === 'forecast') {
-        data = weatherForecast
-    } else if (path === 'search') {
-        data = searchLocation
+    let data = {}
+    if (path === 'currentconditions') {
+        data = cityWeather
+    } else if (path === 'forecasts') {
+        data = cityWeatherForecast
+    } else if (path === 'autocomplete') {
+        data = searchCity
     } else {
         data = geolocationWeather
     }
