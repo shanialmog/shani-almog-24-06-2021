@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Raleway:wght@100;200;300;400;500&family=Roboto:wght@100;300;400&display=swap');
+
+:root {
+    --primary-color: #313161;
+    --secondary-color: #B5838D;
+    --medium-color: #E5989B;
+    --dark-color: #404c91;
+    --light-color: #FFCDB2;
+    --neutral-color: #606060;
+    --bg-color: #FFB4A2;
+    --danger-color: #e21c1ca6;
+    --info-color: #feea88;
+    --success-color: #1c54e2a6;
+    --badge-color: #874091;
+    --form-title-color: #405891;
+    }
+
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+body {
+    margin: 0 auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+ul {
+    list-style: none;
+}
+
+nav a {
+    color: #fff;
+    padding: 0.45rem;
+    margin: 0 0.25rem;
+    font-size: 0.9em;
+}
+
+nav ul {
+    display: flex;
+}

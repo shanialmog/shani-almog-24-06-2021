@@ -1,6 +1,6 @@
 import { TOGGLE_DARKMODE } from '../actions'
 
-const initialState = true
+const initialState = false
 
 const darkmode = (state = initialState, action) => {
     switch (action.type) {
