@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import Searchbar from './Searchbar'
+import Searchbar from '../components/Searchbar'
 
 const DEFAULT_CITY_KEY = '215854'
 const Home = (props) => {

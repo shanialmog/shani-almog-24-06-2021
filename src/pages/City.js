@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getData } from '../utils/API'
-import Searchbar from './Searchbar'
-import CityForecast from './CityForecast'
+import { getCityWeather, getCityForecast } from '../utils/API'
+import Searchbar from '../components/Searchbar'
+import CityForecast from '../components/CityForecast'
 import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -36,10 +36,10 @@ const City = ({ match }) => {
 
     useEffect(() => {
         const getCityData = async () => {
-            const cityData = await getData('currentconditions', { cityKey })
+            const cityData = await getCityWeather(cityKey)
             // API returns an array, taking the first item
             setCityWeather(cityData[0])
-            const cityForecastData = await getData('forecasts', { cityKey })
+            const cityForecastData = await getCityForecast(cityKey)
             setDailyForecasts(cityForecastData.DailyForecasts)
         }
         getCityData()
