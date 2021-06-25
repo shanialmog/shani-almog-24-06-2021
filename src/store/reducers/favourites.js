@@ -3,7 +3,7 @@ import {
     REMOVE_FAVOURITE
 } from '../actions'
 
-const initialState = new Set(['www', 'zzz'])
+const initialState = new Set([])
 
 const favourites = (state = initialState, action) => {
     switch (action.type) {

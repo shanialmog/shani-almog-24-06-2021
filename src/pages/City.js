@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getCityWeather, getCityForecast } from '../utils/API'
+import FavouriteButton from '../components/FavouriteButton'
 import Searchbar from '../components/Searchbar'
 import CityForecast from '../components/CityForecast'
 import { useSelector } from 'react-redux'
@@ -62,6 +63,7 @@ const City = ({ match }) => {
             <Searchbar />
             <Card className={`${classes.root} ${classes.borderRadius}`}>
                 <CardContent>
+                    <FavouriteButton cityKey={cityKey}/>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                         {LocalizedName}, {Country.ID}
                     </Typography>
