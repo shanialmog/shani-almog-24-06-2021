@@ -57,4 +57,9 @@ nav ul {
 .center {
     display: flex;
     justify-content: center;
-} 
+}
+
+.city-forecast-cont {
+    display: flex;
+    justify-content: space-between;
+}

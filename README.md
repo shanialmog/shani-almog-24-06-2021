@@ -1,9 +1,8 @@
 # Weather App
 
 ## TODO
-* Home: redirect to TLV on load
-* City: display current weather data
 * City: display forecast weather data
+* Refactor API to multiple exports
 * City: add/remove from favourites
 * Favourites: list favourite cities
 * Favourites: redirect to city on click

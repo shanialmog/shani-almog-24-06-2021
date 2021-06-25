@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getData } from '../utils/API'
 import Searchbar from './Searchbar'
+import CityForecast from './CityForecast'
 import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -25,6 +26,7 @@ const City = ({ match }) => {
     const cityKey = match.params.id
     const cities = useSelector((state) => state.cities)
     const [cityWeather, setCityWeather] = useState({})
+    const [dailyForecasts, setDailyForecasts] = useState([])
 
     const {
         LocalizedName,
@@ -34,9 +36,11 @@ const City = ({ match }) => {
 
     useEffect(() => {
         const getCityData = async () => {
-            const data = await getData('currentconditions', { 'cityKey': cityKey })
+            const cityData = await getData('currentconditions', { cityKey })
             // API returns an array, taking the first item
-            setCityWeather(data[0])
+            setCityWeather(cityData[0])
+            const cityForecastData = await getData('forecasts', { cityKey })
+            setDailyForecasts(cityForecastData.DailyForecasts)
         }
         getCityData()
     }, [cityKey])
@@ -83,6 +87,9 @@ const City = ({ match }) => {
                     }
                 </CardContent>
             </Card>
+            <div>
+                <CityForecast dailyForecasts={dailyForecasts} />
+            </div>
         </div>
     )
 }
