@@ -6,15 +6,15 @@ import Favourites from './components/Favourites'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import { CssBaseline } from '@material-ui/core'
-import { orange, deepOrange, lightBlue, deepPurple } from '@material-ui/core/colors'
+// import { orange, deepOrange, lightBlue, deepPurple } from '@material-ui/core/colors'
 import { useSelector } from 'react-redux'
 import './App.css'
 
 
 function App() {
   const darkmode = useSelector((state) => state.darkmode)
-  const mainPrimaryColor = darkmode ? orange[500] : lightBlue[500]
-  const mainSecondaryColor = darkmode ? deepOrange[900] : deepPurple[500]
+  // const mainPrimaryColor = darkmode ? orange[500] : lightBlue[500]
+  // const mainSecondaryColor = darkmode ? deepOrange[900] : deepPurple[500]
 
   const theme = createMuiTheme({
     palette: {

@@ -29,6 +29,7 @@ const Navabar = () => {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             dispatch({ type: TOGGLE_DARKMODE })
         }
+        // eslint-disable-next-line
     }, [])
 
     const ToggleDarkmode = (e) => {

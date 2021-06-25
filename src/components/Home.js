@@ -9,6 +9,7 @@ const Home = (props) => {
             props.history.push(`/city/${DEFAULT_CITY_KEY}`)
         }
         redirectToDefaultCity()
+        // eslint-disable-next-line
     }, [])
 
     return (
