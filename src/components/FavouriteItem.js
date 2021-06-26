@@ -1,9 +1,30 @@
 import { useEffect, useState } from 'react'
 import FavouriteButton from './FavouriteButton'
 import { getCityWeather, getCityData } from '../utils/API'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import CardActionArea from '@material-ui/core/CardActionArea'
 
+const useStyles = makeStyles({
+    root: {
+        minWidth: 150,
+        maxWidth: 200,
+    },
+    title: {
+        fontSize: '2em',
+    },
+    borderRadius: {
+        borderRadius: '8px',
+    },
+    actionArea: {
+        padding: '1.5em'
+    }
+})
 
-const FavouriteItem = ({ cityKey }) => {
+const FavouriteItem = ({ cityKey, history }) => {
+    const classes = useStyles()
     const [cityData, setCityData] = useState({})
     const [cityWeather, setCityWeather] = useState({})
 
@@ -19,18 +40,37 @@ const FavouriteItem = ({ cityKey }) => {
         init()
     }, [cityKey])
 
-    const cityName = cityData.LocalizedName
+    const cityName = cityData?.LocalizedName
     const countryId = cityData?.Country?.ID
-
     const { WeatherText } = cityWeather
+
+    const redirectToCity = () => {
+        history.push(`/city/${cityKey}`)
+    }
+
 
     return (
         <div>
-            <FavouriteButton cityKey={cityKey} />
-            {cityKey}
-            {cityName}
-            {countryId}
-            {WeatherText}
+            <Card
+                className={`${classes.root} ${classes.borderRadius}`}
+            >
+                <CardActionArea className={classes.actionArea}>
+                    <CardContent>
+                        <Typography
+                            className={classes.title}
+                            color='textSecondary'
+                            gutterBottom
+                            onClick={redirectToCity}
+                        >
+                            {cityName}, {countryId}
+                        </Typography>
+                        <FavouriteButton cityKey={cityKey} />
+                        <Typography gutterBottom>
+                            {WeatherText}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
         </div>
     )
 }

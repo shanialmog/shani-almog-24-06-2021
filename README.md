@@ -1,8 +1,6 @@
 # Weather App
 
 ## TODO
-* Favourites: remove city from favourites(after confirm)
-* Favourites: redirect to city on click
 * Search functionality
 * Facelift
 * Add isLoading

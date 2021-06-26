@@ -63,3 +63,18 @@ nav ul {
     display: flex;
     justify-content: space-around;
 }
+
+.favourites-container {
+    text-align: center;
+    padding: 2em;
+}
+
+.favourites-container h1 {
+    margin-bottom: 1em;
+}
+
+.favourites-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+}

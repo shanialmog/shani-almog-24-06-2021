@@ -40,8 +40,6 @@ const FavouriteButton = ({ cityKey }) => {
             <IconButton onClick={handleClick}>
                 <img src={isFavourite ? '/assets/FilledHeart.svg' : '/assets/Heart.svg'} alt='favourite' />
             </IconButton>
-
-
             <Dialog
                 open={isDialogOpen}
                 onClose={cancelDialog}

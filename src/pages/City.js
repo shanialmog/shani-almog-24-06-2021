@@ -64,7 +64,7 @@ const City = ({ match }) => {
             <Card className={`${classes.root} ${classes.borderRadius}`}>
                 <CardContent>
                     <FavouriteButton cityKey={cityKey}/>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    <Typography className={classes.title} color='textSecondary' gutterBottom>
                         {LocalizedName}, {Country.ID}
                     </Typography>
                     {
