@@ -5,7 +5,7 @@ const citiesSearchResults = require('./mocks/mockDataSearch.json')
 // const geolocationWeather = require('./mocks/mockDataGeolocation.json')
 
 const API_KEY = '95aNm3IByBwCkB8CTzfaBHAvADSLgy98'
-const BASE_URL = 'http://dataservice.accuweather.com'
+const BASE_URL = 'https://dataservice.accuweather.com'
 const USE_MOCK_DATA = false
 
 const sleep = ms => new Promise(resolve => {
