@@ -1,15 +1,23 @@
 import { useState } from 'react'
 import { searchCities } from '../utils/API'
+import Alert from '@material-ui/lab/Alert'
 
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
-const Searchbar = ({history}) => {
+const Searchbar = ({ history }) => {
     const [options, setOptions] = useState([])
+    const [error, setError] = useState(null)
 
     const onSearchChange = async (e) => {
-        const data = await searchCities(e.target.value)
-        setOptions(data)
+        setError(null)
+        try {
+            const data = await searchCities(e.target.value)
+            setOptions(data)
+        } catch (e) {
+            console.error(e)
+            setError('Something went wrong')
+        }
     }
 
     const onCitySelect = (e, value) => {
@@ -19,7 +27,7 @@ const Searchbar = ({history}) => {
 
 
     return (
-        <div className='center'>
+        <div>
             <Autocomplete
                 style={{ width: 300 }}
                 freeSolo
@@ -38,6 +46,12 @@ const Searchbar = ({history}) => {
                     />
                 )}
             />
+            {
+                error &&
+                <div className='searchbar-alert'>
+                    <Alert severity="error">{error}</Alert>
+                </div>
+            }
         </div>
     )
 }
