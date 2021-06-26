@@ -28,7 +28,6 @@ const Searchbar = ({ history }) => {
         history.push(`/city/${value.Key}`)
     }
 
-
     return (
         <div>
             <Autocomplete

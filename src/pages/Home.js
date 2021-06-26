@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Searchbar from '../components/Searchbar'
 
 const DEFAULT_CITY_KEY = '215854'
-const Home = ({history}) => {
+const Home = ({ history }) => {
 
     useEffect(() => {
         const redirectToDefaultCity = async () => {
@@ -14,7 +14,7 @@ const Home = ({history}) => {
 
     return (
         <div className='container'>
-            <Searchbar history={history}/>
+            <Searchbar history={history} />
         </div>
     )
 }

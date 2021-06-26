@@ -2,21 +2,24 @@ import { useEffect, useState } from 'react'
 import { getCityWeather, getCityForecast } from '../utils/API'
 import FavouriteButton from '../components/FavouriteButton'
 import Searchbar from '../components/Searchbar'
-import Alert from '@material-ui/lab/Alert'
+import WeatherIcon from '../components/WeatherIcon'
 import CityForecast from '../components/CityForecast'
+import Temperature from '../components/Temperature'
+import Alert from '@material-ui/lab/Alert'
 import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import CardHeader from '@material-ui/core/CardHeader'
 
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
         maxWidth: 500,
-        minHeight: 300,
-        // maxHeight: 200
+        padding: '1em',
+        textAlign: 'center'
     },
     cityInfo: {
         flexGrow: '4'
@@ -38,12 +41,6 @@ const City = ({ match, history }) => {
     const [isFetching, setIsFetching] = useState(false)
     const [error, setError] = useState(null)
 
-    const {
-        LocalizedName,
-        Country,
-    } = cities[cityKey]
-
-
     useEffect(() => {
         const init = async () => {
             setError(null)
@@ -63,10 +60,11 @@ const City = ({ match, history }) => {
         init()
     }, [cityKey])
 
-    const {
-        Temperature,
-        WeatherText
-    } = cityWeather
+    const weatherText = cityWeather.WeatherText
+    const temperatureValue = cityWeather.Temperature
+    const weatherIcon = cityWeather.WeatherIcon
+    const localizedName = cities[cityKey]?.LocalizedName
+    const country = cities[cityKey]?.Country?.ID
 
     return (
         <div className='city-container'>
@@ -76,30 +74,30 @@ const City = ({ match, history }) => {
                 <CircularProgress />
             }
             {
-                error && 
+                error &&
                 <Alert severity="error">{error}</Alert>
             }
             {
                 !error && !isFetching &&
                 <div className='city-container'>
                     <Card className={`${classes.root} ${classes.borderRadius} ${classes.cityInfo}`}>
+                        <CardHeader
+                            title={
+                                <Typography className={classes.title} color='textSecondary'>
+                                    {localizedName}, {country}
+                                </Typography>
+                            }
+                            avatar={
+                                <FavouriteButton cityKey={cityKey} />
+                            }
+                        />
                         <CardContent>
-                            <FavouriteButton cityKey={cityKey} />
-                            <Typography className={classes.title} color='textSecondary' gutterBottom>
-                                {LocalizedName}, {Country.ID}
-                            </Typography>
                             {
-                                WeatherText &&
+                                weatherText &&
                                 <div>
-                                    <Typography variant='h4' component='h2'>
-                                        <span>
-                                            {Temperature.Metric.Value}
-                                        </span>
-                                        <span>
-                                            {Temperature.Metric.Unit}
-                                        </span>
-                                    </Typography>
-                                    <Typography variant='h5' component='h3'>{WeatherText}</Typography>
+                                    <Temperature valueInCelsius={temperatureValue.Metric.Value} />
+                                    <Typography variant='h5' component='h3'>{weatherText}</Typography>
+                                    <WeatherIcon weatherIcon={weatherIcon} />
                                 </div>
                             }
                         </CardContent>

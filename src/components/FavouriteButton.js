@@ -36,7 +36,6 @@ const FavouriteButton = ({ cityKey }) => {
         setIsDIalogOpen(false)
     }
 
-
     return (
         <span>
             <IconButton onClick={handleClick}>

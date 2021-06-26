@@ -3,7 +3,9 @@ import FavouriteButton from './FavouriteButton'
 import { getCityWeather, getCityData } from '../utils/API'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
+import CardHeader from '@material-ui/core/CardHeader'
 import Typography from '@material-ui/core/Typography'
+import Temperature from './Temperature'
 import { makeStyles } from '@material-ui/core/styles'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -11,18 +13,17 @@ import Alert from '@material-ui/lab/Alert'
 
 const useStyles = makeStyles({
     root: {
-        width: 200,
         minWidth: 150,
-        maxWidth: 300,
+        maxWidth: 300
     },
     title: {
-        fontSize: '2em',
+        fontSize: '1.5em',
     },
     borderRadius: {
         borderRadius: '8px',
     },
     actionArea: {
-        padding: '1.5em'
+        padding: '0 1em'
     }
 })
 
@@ -63,10 +64,10 @@ const FavouriteItem = ({ cityKey, history }) => {
     }
 
     return (
-        <div>
+        <div className='favourite-item'>
             {
                 isFetching &&
-                    <CircularProgress />
+                <CircularProgress />
             }
             {
                 error &&
@@ -76,19 +77,23 @@ const FavouriteItem = ({ cityKey, history }) => {
                 !error && !isFetching &&
                 <Card className={`${classes.root} ${classes.borderRadius}`}>
                     <CardActionArea className={classes.actionArea}>
+                        <CardHeader
+                            title={
+                                <Typography
+                                    className={classes.title}
+                                    color='textSecondary'
+                                    gutterBottom
+                                    onClick={redirectToCity}
+                                >
+                                    {cityName}, {countryId}
+                                </Typography>
+                            }
+                            avatar={
+                                <FavouriteButton cityKey={cityKey} />
+                            }
+                        />
                         <CardContent>
-                            <Typography
-                                className={classes.title}
-                                color='textSecondary'
-                                gutterBottom
-                                onClick={redirectToCity}
-                            >
-                                {cityName}, {countryId}
-                            </Typography>
-                            <FavouriteButton cityKey={cityKey} />
-                            <Typography variant='h5' component='h2' gutterBottom>
-                                {tempreture}
-                            </Typography>
+                            <Temperature valueInCelsius={tempreture} />
                             <Typography gutterBottom>
                                 {WeatherText}
                             </Typography>

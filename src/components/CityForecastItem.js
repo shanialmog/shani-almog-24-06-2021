@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+import Temperature from './Temperature'
 
 const useStyles = makeStyles({
     root: {
@@ -25,31 +26,31 @@ const CityForecastItem = ({ dailyForecast }) => {
     const date = moment(dailyForecast.Date).format('D.MM')
     const minTemp = dailyForecast.Temperature.Minimum.Value
     const maxTemp = dailyForecast.Temperature.Maximum.Value
-    const tempUnit = dailyForecast.Temperature.Maximum.Unit
     const dayText = dailyForecast.Day.IconPhrase
     const nightText = dailyForecast.Night.IconPhrase
 
     return (
-            <Card className={`${classes.root} ${classes.borderRadius}`}>
-                    <CardContent>
-                        <Typography
-                            className={classes.title}
-                            color='textSecondary'
-                            gutterBottom
-                        >
-                            {date}
-                        </Typography>
-                        <Typography gutterBottom>
-                        {minTemp}-{maxTemp}{tempUnit}
-                        </Typography>
-                        <Typography gutterBottom>
-                           Day: {dayText}
-                        </Typography>
-                        <Typography gutterBottom>
-                        Night: {nightText}
-                        </Typography>
-                    </CardContent>
-            </Card>
+        <Card className={`${classes.root} ${classes.borderRadius}`}>
+            <CardContent>
+                <Typography
+                    className={classes.title}
+                    color='textSecondary'
+                    gutterBottom
+                >
+                    {date}
+                </Typography>
+                <Typography gutterBottom>
+                    <Temperature valueInCelsius={minTemp} small /> -
+                    <Temperature valueInCelsius={maxTemp} small />
+                </Typography>
+                <Typography gutterBottom>
+                    Day: {dayText}
+                </Typography>
+                <Typography gutterBottom>
+                    Night: {nightText}
+                </Typography>
+            </CardContent>
+        </Card>
     )
 }
 
