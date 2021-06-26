@@ -14,6 +14,7 @@
 * Navbar: C/F units toggle
 * Store: write/read from local storage
 * Responsive design
+* Disable strict mode
 * Animations
 * Tests
 * Typescript
