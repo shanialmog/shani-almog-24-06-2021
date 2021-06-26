@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     }
 })
 
-const City = ({ match }) => {
+const City = ({ match, history }) => {
     const classes = useStyles()
     const cityKey = match.params.id
     const cities = useSelector((state) => state.cities)
@@ -60,10 +60,10 @@ const City = ({ match }) => {
 
     return (
         <div>
-            <Searchbar />
+            <Searchbar history={history} />
             <Card className={`${classes.root} ${classes.borderRadius}`}>
                 <CardContent>
-                    <FavouriteButton cityKey={cityKey}/>
+                    <FavouriteButton cityKey={cityKey} />
                     <Typography className={classes.title} color='textSecondary' gutterBottom>
                         {LocalizedName}, {Country.ID}
                     </Typography>

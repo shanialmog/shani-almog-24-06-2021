@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import Searchbar from '../components/Searchbar'
 
 const DEFAULT_CITY_KEY = '215854'
-const Home = (props) => {
+const Home = ({history}) => {
 
     useEffect(() => {
         const redirectToDefaultCity = async () => {
-            props.history.push(`/city/${DEFAULT_CITY_KEY}`)
+            history.push(`/city/${DEFAULT_CITY_KEY}`)
         }
         redirectToDefaultCity()
         // eslint-disable-next-line
@@ -14,7 +14,7 @@ const Home = (props) => {
 
     return (
         <div className='container'>
-            <Searchbar />
+            <Searchbar history={history}/>
         </div>
     )
 }

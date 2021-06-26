@@ -4,12 +4,17 @@ import { searchCities } from '../utils/API'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
-const Searchbar = () => {
+const Searchbar = ({history}) => {
     const [options, setOptions] = useState([])
 
     const onSearchChange = async (e) => {
         const data = await searchCities(e.target.value)
         setOptions(data)
+    }
+
+    const onCitySelect = (e, value) => {
+        console.log(value.Key)
+        history.push(`/city/${value.Key}`)
     }
 
 
@@ -19,7 +24,9 @@ const Searchbar = () => {
                 style={{ width: 300 }}
                 freeSolo
                 disableClearable
-                options={options.map((option) => option.LocalizedName)}
+                options={options}
+                getOptionLabel={(option) => option.LocalizedName}
+                onChange={onCitySelect}
                 renderInput={(params) => (
                     <TextField
                         {...params}

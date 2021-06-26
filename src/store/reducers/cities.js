@@ -10,6 +10,14 @@ const initialState = {
             ID: 'IL',
             LocalizedName: 'Israel'
         }
+    },
+    '3431644': {
+        Key: '3431644',
+        LocalizedName: 'Telanaipura',
+        Country: {
+            ID: 'ID',
+            LocalizedName: 'Indonesia'
+        }
     }
 }
 
