@@ -1,20 +1,32 @@
+import { useState } from 'react'
+import { searchCities } from '../utils/API'
+
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
 const Searchbar = () => {
+    const [options, setOptions] = useState([])
+
+    const onSearchChange = async (e) => {
+        const data = await searchCities(e.target.value)
+        setOptions(data)
+    }
+
+
     return (
         <div className='center'>
             <Autocomplete
                 style={{ width: 300 }}
                 freeSolo
                 disableClearable
-                options={cities.map((option) => option)}
+                options={options.map((option) => option.LocalizedName)}
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        label="Search input"
+                        label="Search city"
                         margin="normal"
                         variant="outlined"
+                        onChange={onSearchChange}
                         InputProps={{ ...params.InputProps, type: 'search' }}
                     />
                 )}
@@ -22,12 +34,5 @@ const Searchbar = () => {
         </div>
     )
 }
-
-const cities = [
-    'Ramat-Gan',
-    'Tel-Aviv',
-    'Jerusalem',
-    'Haifa'
-]
 
 export default Searchbar
