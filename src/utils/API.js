@@ -11,8 +11,6 @@ export const getCityForecast = async (cityKey) => {
     return cityWeatherForecast
 }
 
-export const getAutocompleteResults = async (cityKey) => {
+export const getCityData = async (cityKey) => {
     return searchCity
 }
-
-

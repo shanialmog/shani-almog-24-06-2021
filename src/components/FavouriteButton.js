@@ -18,7 +18,7 @@ const FavouriteButton = ({ cityKey }) => {
     return (
         <div>
             <IconButton onClick={handleClick}>
-                <img src={isFavourite ? '/assets/FilledHeart.svg' : '/assets/Heart.svg'} />
+                <img src={isFavourite ? '/assets/FilledHeart.svg' : '/assets/Heart.svg'} alt='favourite' />
             </IconButton>
         </div>
     )

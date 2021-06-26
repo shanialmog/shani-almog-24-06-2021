@@ -4,7 +4,6 @@ const CityForecast = ({ dailyForecasts }) => {
 
     return (
         <div className='city-forecast-cont'>
-            <h3>Forecasts</h3>
             {
                 dailyForecasts.map((day) =>
                     <CityForecastItem

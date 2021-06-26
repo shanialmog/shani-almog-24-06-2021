@@ -36,14 +36,14 @@ const City = ({ match }) => {
 
 
     useEffect(() => {
-        const getCityData = async () => {
+        const init = async () => {
             const cityData = await getCityWeather(cityKey)
             // API returns an array, taking the first item
             setCityWeather(cityData[0])
             const cityForecastData = await getCityForecast(cityKey)
             setDailyForecasts(cityForecastData.DailyForecasts)
         }
-        getCityData()
+        init()
     }, [cityKey])
 
     const {
