@@ -2,7 +2,6 @@
 
 ## TODO
 * Facelift
-* Use real API
 * Errors
     * Geolocation: modal - something went wrong
 * Search: add throttle/debounce

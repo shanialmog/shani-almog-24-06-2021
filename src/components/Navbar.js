@@ -70,10 +70,11 @@ const Navabar = () => {
                                     value='top'
                                     control={
                                         <Switch
+                                            disabled
                                             color='secondary'
                                             inputProps={{ 'aria-label': 'secondary checkbox' }}
                                         />}
-                                    label='Degrees'
+                                    label='C°/F°'
                                 />
                             </FormGroup>
                         </span>

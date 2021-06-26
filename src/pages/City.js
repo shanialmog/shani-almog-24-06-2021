@@ -64,13 +64,6 @@ const City = ({ match, history }) => {
     }, [cityKey])
 
     const {
-        EpochTime,
-        HasPrecipitation,
-        IsDayTime,
-        // Link,
-        LocalObservationDateTime,
-        MobileLink,
-        PrecipitationType,
         Temperature,
         WeatherText
     } = cityWeather
