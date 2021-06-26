@@ -1,6 +1,7 @@
-import {
-    CITY_DATA,
-} from '../actions'
+import { ADD_CITIES_DATA } from '../actions'
+
+// This reducer is used as a cache for city names by city key
+// to avoid making many API calls
 
 const initialState = {
     '215854': {
@@ -10,21 +11,27 @@ const initialState = {
             ID: 'IL',
             LocalizedName: 'Israel'
         }
-    },
-    '3431644': {
-        Key: '3431644',
-        LocalizedName: 'Telanaipura',
-        Country: {
-            ID: 'ID',
-            LocalizedName: 'Indonesia'
-        }
     }
 }
 
 const cities = (state = initialState, action) => {
     switch (action.type) {
-        case CITY_DATA:
-            return state
+        case ADD_CITIES_DATA:
+            const newItems = {}
+            for (const city of action.payload) {
+                newItems[city.Key] = {
+                    Key: city.Key,
+                    LocalizedName: city.LocalizedName,
+                    Country: {
+                        ID: city.Country.ID,
+                        LocalizedName: city.Country.LocalizedName
+                    }
+                }
+            }
+            return {
+                ...state,
+                ...newItems
+            }
         default:
             return state
     }

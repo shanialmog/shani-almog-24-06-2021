@@ -19,3 +19,4 @@
 
 ## TODO
 * City: handle situations where only the forecast fetch fails
+* Autocomplete search in API CORS?

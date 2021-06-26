@@ -42,8 +42,7 @@ const FavouriteItem = ({ cityKey, history }) => {
                 // API returns an array, taking the first item
                 setCityWeather(cityWeatherData[0])
                 const cityData = await getCityData(cityKey)
-                const FavouriteCity = cityData.filter((city) => city.Key === cityKey)
-                setCityData(FavouriteCity[0])
+                setCityData(cityData)
 
             } catch (e) {
                 console.error(e)

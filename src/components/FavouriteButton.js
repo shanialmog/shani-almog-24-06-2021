@@ -15,8 +15,8 @@ import { mdiHeart } from '@mdi/js'
 
 const FavouriteButton = ({ cityKey }) => {
     const dispatch = useDispatch()
-    const [isDialogOpen, setIsDIalogOpen] = useState(false)
     const favourites = useSelector((state) => state.favourites)
+    const [isDialogOpen, setIsDIalogOpen] = useState(false)
     const isFavourite = favourites.has(cityKey)
 
     const handleClick = (e) => {

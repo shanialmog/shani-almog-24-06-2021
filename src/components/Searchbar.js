@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { searchCities } from '../utils/API'
-import Alert from '@material-ui/lab/Alert'
+import { useDispatch } from 'react-redux'
+import { ADD_CITIES_DATA } from '../store/actions'
 
+import Alert from '@material-ui/lab/Alert'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
 const Searchbar = ({ history }) => {
+    const dispatch = useDispatch()
     const [options, setOptions] = useState([])
     const [error, setError] = useState(null)
 
@@ -13,6 +16,7 @@ const Searchbar = ({ history }) => {
         setError(null)
         try {
             const data = await searchCities(e.target.value)
+            dispatch({ type: ADD_CITIES_DATA, payload: data })
             setOptions(data)
         } catch (e) {
             console.error(e)
@@ -21,7 +25,6 @@ const Searchbar = ({ history }) => {
     }
 
     const onCitySelect = (e, value) => {
-        console.log(value.Key)
         history.push(`/city/${value.Key}`)
     }
 
