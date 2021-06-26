@@ -43,17 +43,16 @@ const FavouriteItem = ({ cityKey, history }) => {
     const cityName = cityData?.LocalizedName
     const countryId = cityData?.Country?.ID
     const { WeatherText } = cityWeather
+    const tempreture = cityWeather?.Temperature?.Metric?.Value
 
     const redirectToCity = () => {
         history.push(`/city/${cityKey}`)
     }
+    
 
 
     return (
-        <div>
-            <Card
-                className={`${classes.root} ${classes.borderRadius}`}
-            >
+            <Card className={`${classes.root} ${classes.borderRadius}`}>
                 <CardActionArea className={classes.actionArea}>
                     <CardContent>
                         <Typography
@@ -65,13 +64,15 @@ const FavouriteItem = ({ cityKey, history }) => {
                             {cityName}, {countryId}
                         </Typography>
                         <FavouriteButton cityKey={cityKey} />
+                        <Typography variant='h5' component='h2' gutterBottom>
+                            {tempreture}
+                        </Typography>
                         <Typography gutterBottom>
                             {WeatherText}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
-        </div>
     )
 }
 

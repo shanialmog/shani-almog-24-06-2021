@@ -13,11 +13,19 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        display: 'flex'
     },
     switch: {
         display: 'inline-block',
-    }
+    },
+    header: {
+        minHeight: '10vh',
+        padding: '0.5em'
+    },
+    content: {
+        lineHeight: '3',
+        display: 'flex' 
+    },
 }))
 
 const Navabar = () => {
@@ -37,42 +45,41 @@ const Navabar = () => {
     }
 
     return (
-        <div>
             <nav className={classes.root}>
-                <AppBar position='static'>
-                    <Typography variant='h6' color='inherit'>
+                <AppBar className={classes.header} position='static'>
+                    <Typography className={classes.content} variant='h6' color='inherit'>
                         <Button><Link to='/'>Home</Link></Button>
                         <Button><Link to='/Favourites'>Favourites</Link></Button>
-                        <FormGroup className={classes.switch}aria-label='position' row>
-                            <FormControlLabel
-                                value='top'
-                                control={
-                                    <Switch
-                                        checked={darkmode}
-                                        onChange={ToggleDarkmode}
-                                        color='secondary'
-                                        inputProps={{ 'aria-label': 'secondary checkbox' }}
-                                    />}
-                                label='Dark mode'
-                            />
-                        </FormGroup>
-                        <FormGroup className={classes.switch} aria-label='position' row>
-                            <FormControlLabel
-                                value='top'
-                                control={
-                                    <Switch
-                                        // checked={}
-                                        // onChange={}
-                                        color='secondary'
-                                        inputProps={{ 'aria-label': 'secondary checkbox' }}
-                                    />}
-                                label='Degrees'
-                            />
-                        </FormGroup>
+                        <div className='grow'></div>
+                        <span>
+                            <FormGroup className={classes.switch} aria-label='position' row>
+                                <FormControlLabel
+                                    value='top'
+                                    control={
+                                        <Switch
+                                            checked={darkmode}
+                                            onChange={ToggleDarkmode}
+                                            color='secondary'
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />}
+                                    label='Dark mode'
+                                />
+                            </FormGroup>
+                            <FormGroup className={classes.switch} aria-label='position' row>
+                                <FormControlLabel
+                                    value='top'
+                                    control={
+                                        <Switch
+                                            color='secondary'
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />}
+                                    label='Degrees'
+                                />
+                            </FormGroup>
+                        </span>
                     </Typography>
                 </AppBar>
             </nav>
-        </div>
     )
 }
 

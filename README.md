@@ -1,7 +1,6 @@
 # Weather App
 
 ## TODO
-* Search functionality
 * Facelift
 * Add isLoading
 * Use real API
@@ -16,3 +15,4 @@
 * Animations
 * Tests
 * Typescript
+* Add degrees

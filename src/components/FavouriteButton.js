@@ -9,7 +9,9 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-
+import Icon from '@mdi/react'
+import { mdiHeartOutline } from '@mdi/js'
+import { mdiHeart } from '@mdi/js'
 
 const FavouriteButton = ({ cityKey }) => {
     const dispatch = useDispatch()
@@ -24,7 +26,7 @@ const FavouriteButton = ({ cityKey }) => {
             dispatch({ type: ADD_FAVOURITE, payload: cityKey })
         }
     }
-    
+
     const removeFavourite = () => {
         dispatch({ type: REMOVE_FAVOURITE, payload: cityKey })
         setIsDIalogOpen(false)
@@ -36,9 +38,14 @@ const FavouriteButton = ({ cityKey }) => {
 
 
     return (
-        <div>
+        <span>
             <IconButton onClick={handleClick}>
-                <img src={isFavourite ? '/assets/FilledHeart.svg' : '/assets/Heart.svg'} alt='favourite' />
+                <Icon path={isFavourite ? mdiHeart : mdiHeartOutline}
+                    size={1}
+                    horizontal
+                    vertical
+                    rotate={180}
+                    color="#fe4a4a" />
             </IconButton>
             <Dialog
                 open={isDialogOpen}
@@ -62,7 +69,7 @@ const FavouriteButton = ({ cityKey }) => {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </span>
     )
 }
 

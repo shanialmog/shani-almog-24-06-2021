@@ -13,6 +13,11 @@ const useStyles = makeStyles({
     root: {
         minWidth: 275,
         maxWidth: 500,
+        minHeight: 300,
+        // maxHeight: 200
+    },
+    cityInfo: {
+        flexGrow: '4'
     },
     title: {
         fontSize: '3em',
@@ -61,34 +66,30 @@ const City = ({ match, history }) => {
     return (
         <div>
             <Searchbar history={history} />
-            <Card className={`${classes.root} ${classes.borderRadius}`}>
-                <CardContent>
-                    <FavouriteButton cityKey={cityKey} />
-                    <Typography className={classes.title} color='textSecondary' gutterBottom>
-                        {LocalizedName}, {Country.ID}
-                    </Typography>
-                    {
-                        WeatherText &&
-                        <div>
-                            <Typography>
-                                <span>
-                                    {Temperature.Metric.Value}
-                                </span>
-                                <span>
-                                    {Temperature.Metric.Unit}
-                                </span>
-                            </Typography>
-                            <Typography>{WeatherText}</Typography>
-                            <Typography>{EpochTime}</Typography>
-                            <Typography>{HasPrecipitation}</Typography>
-                            <Typography>{IsDayTime}</Typography>
-                            <Typography>{LocalObservationDateTime}</Typography>
-                            <Typography>{PrecipitationType}</Typography>
-                            <Typography>{MobileLink}</Typography>
-                        </div>
-                    }
-                </CardContent>
-            </Card>
+            <div className='city-container'>
+                <Card className={`${classes.root} ${classes.borderRadius} ${classes.cityInfo}`}>
+                    <CardContent>
+                        <FavouriteButton cityKey={cityKey} />
+                        <Typography className={classes.title} color='textSecondary' gutterBottom>
+                            {LocalizedName}, {Country.ID}
+                        </Typography>
+                        {
+                            WeatherText &&
+                            <div>
+                                <Typography variant='h4' component='h2'>
+                                    <span>
+                                        {Temperature.Metric.Value}
+                                    </span>
+                                    <span>
+                                        {Temperature.Metric.Unit}
+                                    </span>
+                                </Typography>
+                                <Typography variant='h5' component='h3'>{WeatherText}</Typography>
+                            </div>
+                        }
+                    </CardContent>
+                </Card>
+            </div>
             <div>
                 <CityForecast dailyForecasts={dailyForecasts} />
             </div>
