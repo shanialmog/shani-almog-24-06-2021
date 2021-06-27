@@ -55,7 +55,7 @@ const Navabar = () => {
                 <Typography className={classes.content} variant='h6' color='inherit'>
                     <img src='/assets/weatherLogo.svg' alt='weather-app-logo' />
                     <Button><Link to='/'>Home</Link></Button>
-                    <Button><Link to='/Favourites'>Favourites</Link></Button>
+                    <Button><Link to='/favourites'>favourites</Link></Button>
                     <div className='grow'></div>
                     <span>
                         <FormGroup className={classes.switch} aria-label='position' row>
