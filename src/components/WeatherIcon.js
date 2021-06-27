@@ -20,7 +20,7 @@ const iconMap = {
 const WeatherIcon = ({ weatherIcon }) => {
     const path = iconMap[weatherIcon]
     if (!path) {
-        console.log('No icon for:', weatherIcon)
+        console.debug('No icon for:', weatherIcon)
         return null
     }
 

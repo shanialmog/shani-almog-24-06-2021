@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { getCityWeather, getCityForecast } from '../utils/API'
+import { getCityWeather, getCityForecast, getCityData } from '../utils/API'
 import FavouriteButton from '../components/FavouriteButton'
 import Searchbar from '../components/Searchbar'
 import WeatherIcon from '../components/WeatherIcon'
 import CityForecast from '../components/CityForecast'
 import Temperature from '../components/Temperature'
 import Alert from '@material-ui/lab/Alert'
-import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -35,8 +34,8 @@ const useStyles = makeStyles({
 const City = ({ match, history }) => {
     const classes = useStyles()
     const cityKey = match.params.id
-    const cities = useSelector((state) => state.cities)
     const [cityWeather, setCityWeather] = useState({})
+    const [cityData, setCityData] = useState({})
     const [dailyForecasts, setDailyForecasts] = useState([])
     const [isFetching, setIsFetching] = useState(false)
     const [error, setError] = useState(null)
@@ -46,11 +45,13 @@ const City = ({ match, history }) => {
             setError(null)
             setIsFetching(true)
             try {
-                const cityData = await getCityWeather(cityKey)
-                const cityForecastData = await getCityForecast(cityKey)
+                const cityWeatherResponse = await getCityWeather(cityKey)
+                const cityForecastResponse = await getCityForecast(cityKey)
+                const cityDataResponse = await getCityData(cityKey)
                 // API returns an array, taking the first item
-                setCityWeather(cityData[0])
-                setDailyForecasts(cityForecastData.DailyForecasts)
+                setCityWeather(cityWeatherResponse[0])
+                setDailyForecasts(cityForecastResponse.DailyForecasts)
+                setCityData(cityDataResponse)
             } catch (e) {
                 console.error(e)
                 setError('Failed to fetch data')
@@ -63,8 +64,8 @@ const City = ({ match, history }) => {
     const weatherText = cityWeather.WeatherText
     const temperatureValue = cityWeather.Temperature
     const weatherIcon = cityWeather.WeatherIcon
-    const localizedName = cities[cityKey]?.LocalizedName
-    const country = cities[cityKey]?.Country?.ID
+    const localizedName = cityData?.LocalizedName
+    const country = cityData?.Country?.ID
 
     return (
         <div className='city-container'>

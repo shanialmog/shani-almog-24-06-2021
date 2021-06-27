@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import debounce from 'lodash/debounce'
 import { searchCities } from '../utils/API'
 import { useDispatch } from 'react-redux'
 import { ADD_CITIES_DATA } from '../store/actions'
@@ -12,7 +13,7 @@ const Searchbar = ({ history }) => {
     const [options, setOptions] = useState([])
     const [error, setError] = useState(null)
 
-    const onSearchChange = async (e) => {
+    const onSearchChange = debounce(async (e) => {
         setError(null)
         try {
             const data = await searchCities(e.target.value)
@@ -22,7 +23,7 @@ const Searchbar = ({ history }) => {
             console.error(e)
             setError('Something went wrong')
         }
-    }
+    }, 500)
 
     const onCitySelect = (e, value) => {
         history.push(`/city/${value.Key}`)
