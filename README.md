@@ -1,3 +1,4 @@
+![BWAE-demo](https://user-images.githubusercontent.com/78782036/123533931-ffc62380-d721-11eb-8bc7-56578ddf86e3.gif)
 # Weather App
 
 ## TODO
